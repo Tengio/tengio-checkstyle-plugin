@@ -1,0 +1,21 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        mavenLocal()
+    }
+    dependencies {
+        classpath 'com.tengio.gradle:TengioCheckstylePlugin:1.0-SNAPSHOT'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'com.tengio.gradle.TengioCheckstylePlugin'
+
+// tengioCheckstyle {
+    // excludes = ["**/Track.java", "**/Example.java"]
+// }

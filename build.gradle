@@ -1,0 +1,32 @@
+buildscript {
+   repositories {
+      mavenCentral()
+   }
+
+   dependencies {
+       classpath 'com.puppycrawl.tools:checkstyle:7.3'
+   }
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+}
+
+group = 'com.tengio.gradle'
+version = '1.0-SNAPSHOT'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: mavenLocal().url)
+        }
+    }
+}
