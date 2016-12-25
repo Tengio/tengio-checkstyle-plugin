@@ -12,18 +12,27 @@ Usage
 
 You can place this in your root build.gradle or you app build.gradle.
 
+Build script snippet for use in all Gradle versions:
+
 ```
 buildscript {
-    ...
-    dependencies {
-        classpath 'com.tengio.gradle:TengioCheckstylePlugin:1.0-SNAPSHOT'
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
     }
+  }
+  dependencies {
+    classpath "gradle.plugin.com.tengio.gradle:tengio-checkstyle-plugin:1.0"
+  }
+}
+
+apply plugin: "com.tengio.gradle.tengio-checkstyle-plugin"
+```
+
+Build script snippet for new, incubating, plugin mechanism introduced in Gradle 2.1:
+
+```
+plugins {
+  id "com.tengio.gradle.tengio-checkstyle-plugin" version "1.0"
 }
 ```
-
-In you project
-
-```
-apply plugin: 'com.tengio.gradle.TengioCheckstylePlugin'
-```
-

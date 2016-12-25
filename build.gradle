@@ -1,19 +1,25 @@
 buildscript {
    repositories {
       mavenCentral()
+      maven {
+        url "https://plugins.gradle.org/m2/"
+      }
    }
 
    dependencies {
        classpath 'com.puppycrawl.tools:checkstyle:7.3'
+       classpath "com.gradle.publish:plugin-publish-plugin:0.9.7"
    }
 }
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 apply plugin: 'groovy'
 apply plugin: 'maven'
+apply plugin: "com.gradle.plugin-publish"
 
 dependencies {
     compile gradleApi()
@@ -21,7 +27,7 @@ dependencies {
 }
 
 group = 'com.tengio.gradle'
-version = '1.0-SNAPSHOT'
+version = '1.0'
 
 uploadArchives {
     repositories {
@@ -29,4 +35,18 @@ uploadArchives {
             repository(url: mavenLocal().url)
         }
     }
+}
+
+pluginBundle {
+  website = 'http://www.tengio.com/'
+  vcsUrl = 'https://github.com/tengio/tengio-checkstyle-plugin'
+  description = 'Gradle plugin that extends checkstyle to support android and use Tengio checkstyle configuration'
+  tags = ['checkstyle', 'android']
+
+  plugins {
+    greetingsPlugin {
+      id = 'com.tengio.gradle.tengio-checkstyle-plugin'
+      displayName = 'Tengio checkstyle plugin'
+    }
+  }
 }
